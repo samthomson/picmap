@@ -5,6 +5,9 @@ from os import listdir
 from os.path import isfile, join
 import sqlite3
 
+from get_lat_lon_exif_pil import *
+import get_lat_lon_exif_pil
+
 def get_files(s_base_dir):
 	fileList = []
 
@@ -25,11 +28,37 @@ def get_db_files(db_cursor):
 	return fileList
 
 def process_new_file(s_path):
-	'''
-	add to db, queue accordingly
-	'''
+	# get geo
+	o_image = Image.open(s_path)
+	exif_data = get_exif_data(o_image)
+	lat_lon = get_lat_lon(exif_data)
+
+	lat = 1000
+	lon = 1000
+
+	lat = lat_lon[0]
+	lon = lat_lon[1]
+
+	"""
+	try:
+		lat = lat_lon[0]
+		lon = lat_lon[1]
+	except:
+		lat = 1000
+	else:
+		lat = 1000
+	"""
+
+	"""
+	if lat_lon[0] not None:
+		lat = lat_lon[0]
+
+	if lat_lon[1] not None:
+		lon = lat_lon[1]
+	"""
+
 	# add to files table
-	cursor.execute('''INSERT OR IGNORE INTO files(file) VALUES(?)''', (s_path,))
+	cursor.execute('''INSERT OR IGNORE INTO files(file,lat,lon, hasgeo) VALUES(?,?,?,?)''', (s_path, lat, lon, 1,))
 
 if __name__ == '__main__':
 
@@ -53,29 +82,13 @@ if __name__ == '__main__':
 		if s_physical_file_path not in db_files:
 			# new file, get geo and add to db
 			process_new_file(s_physical_file_path)
+
+			# we found it
 			i_added += 1
 
 	print ("added %i files", (i_added))
 
 
-
-	"""
-	for i in range(i_files):
-		if(files[i].endswith(('.jpg', '.JPG', '.jpeg', '.JPEG'))):
-			print ("file %s" % (files[i]))
-
-			# if the file isn't in our index already get it's geo and add it
-			the_id_of_the_row = None
-			for row in cursor.execute("SELECT id FROM files WHERE file = ?", (files[i],):
-				the_id_of_the_row = row[0]
-			if the_id_of_the_row is None:
-				cursor = sql.cursor()
-				cursor.execute('''INSERT OR IGNORE INTO files(file) VALUES(?)''', files[i])
-				print ("added file %s", files[i])
-				the_id_of_the_row = cursor.lastrowid
-			
-
-	"""
 
 	# persist and closee db
 	db.commit()
