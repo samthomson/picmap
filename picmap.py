@@ -98,8 +98,6 @@ if __name__ == '__main__':
 		pnt = kml.newpoint()
 		#pnt.coords = [(r_file[0], r_file[1])]
 		pnt.coords = [(r_file[1], r_file[0])]
-		pnt.style.labelstyle.color = simplekml.Color.red  # Make the text red
-		pnt.style.labelstyle.scale = 2  # Make the text twice as big
 		pnt.style.iconstyle.icon.href = 'http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png'
 
 
@@ -107,8 +105,8 @@ if __name__ == '__main__':
 
 
 
-	width_in_px = 1000
-	height_in_px = 1000
+	width_in_px = 8000
+	height_in_px = width_in_px / 2
 	mapfile = 'mapnik_style.xml'
 
 	map_canvas = mapnik.Map(width_in_px, height_in_px)
@@ -120,7 +118,7 @@ if __name__ == '__main__':
 	rule = mapnik.Rule()
 	point_symbolizer = mapnik.MarkersSymbolizer()
 	point_symbolizer.allow_overlap = True
-	point_symbolizer.opacity = 0.5 # semi-transparent
+	point_symbolizer.opacity = 1.0 # semi-transparent
 	rule.symbols.append(point_symbolizer)
 	style.rules.append(rule)
 	map_canvas.append_style('GPS_tracking_points', style)
