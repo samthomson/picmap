@@ -58,10 +58,11 @@ if __name__ == '__main__':
 
 	# get a db connection
 	db = sqlite3.connect('files_database')
+	db.text_factory = str
 	cursor = db.cursor()
 
 	# get files from disk
-	physical_files = get_files('seed')
+	physical_files = get_files('C:\Users\sam\Dropbox\pictures\PICTURES - SORTING FOR MEDIADUMP')
 	i_physical_files = len(physical_files)
 
 	# get files from db
@@ -72,8 +73,9 @@ if __name__ == '__main__':
 
 	for s_physical_file_path in physical_files:
 		if s_physical_file_path not in db_files:
-			# new file, get geo and add to db
-			process_new_file(s_physical_file_path)
+			if s_physical_file_path.endswith(('.jpg', '.JPG', '.jpeg', '.JPEG')):
+				# new file, get geo and add to db
+				process_new_file(s_physical_file_path)
 
 			# we found it
 			i_added += 1
@@ -105,7 +107,7 @@ if __name__ == '__main__':
 
 
 
-	width_in_px = 8000
+	width_in_px = 4000
 	height_in_px = width_in_px / 2
 	mapfile = 'mapnik_style.xml'
 

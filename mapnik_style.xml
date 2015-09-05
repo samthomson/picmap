@@ -7,7 +7,7 @@
     </Rule>
   </Style>
 
-  <Layer name="world" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+  <Layer name="world" srs="+proj=longlat +ellps=WGS84 +datum=WGS84">
     <StyleName>My Style</StyleName>
     <Datasource>
       <Parameter name="type">shape</Parameter>
