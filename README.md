@@ -9,4 +9,4 @@ picmap recursively scans a seed directory and builds up an index of files, notin
 - picmap
 - simplekml
 
-[![picmap](https://pbs.twimg.com/media/COKVVxtWEAAa9br.png)](https://pbs.twimg.com/media/COKVVxtWEAAa9br.png)
+[![picmap](https://github.com/samthomson/picmap/blob/master/GPS_tracking_points.png?raw=trueg)](https://github.com/samthomson/picmap/blob/master/GPS_tracking_points.png?raw=true)
