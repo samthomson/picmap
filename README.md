@@ -20,7 +20,7 @@ build the image:
 set a folder in docker-compose to map to seed.
 
 bash into the container:
-`docker-compose run picmap bash`
+`docker-compose run picmap bash "picmap/run.sh"`
 
 run script `python picmap/src/setup.py`
 run script `python picmap/src/picmap.py`
