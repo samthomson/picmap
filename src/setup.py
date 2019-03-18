@@ -1,13 +1,12 @@
 # this script is responsible for creating the database and tables
 
 import sqlite3
-
-
+import os
 
 if __name__ == '__main__':
 
-	#create/open db connection
-	db = sqlite3.connect('files_database')
+	#create/open db connection	
+	db = sqlite3.connect('./out/files_database')
 
 	cursor = db.cursor()
 	

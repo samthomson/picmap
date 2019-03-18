@@ -1,4 +1,11 @@
+# mapped in pictures
 seed
-__pycache__
 
+# map renderings and db
+out
+
+# compiled python files
 *.pyc
+
+# other
+__pycache__

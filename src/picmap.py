@@ -57,12 +57,12 @@ if __name__ == '__main__':
 	print ("\npicmap :)")
 
 	# get a db connection
-	db = sqlite3.connect('files_database')
+	db = sqlite3.connect('./out/files_database')
 	db.text_factory = str
 	cursor = db.cursor()
 
 	# get files from disk
-	physical_files = get_files('./../seed') # previously 'C:\Users\sam\Dropbox\pictures\PICTURES - SORTING FOR MEDIADUMP'
+	physical_files = get_files('./seed')
 	
 	i_physical_files = len(physical_files)
 
@@ -104,7 +104,7 @@ if __name__ == '__main__':
 		pnt.style.iconstyle.icon.href = 'http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png'
 
 
-	kml.save('kml_geo.kml')
+	kml.save('out/kml_geo.kml')
 
 
 
@@ -128,10 +128,10 @@ if __name__ == '__main__':
 
 	# Create a layer to hold the ponts
 	layer = mapnik.Layer('GPS_tracking_points')
-	layer.datasource = mapnik.Ogr(file="map-assets/kml_geo.kml", layer_by_index=0)
+	layer.datasource = mapnik.Ogr(file="out/kml_geo.kml", layer_by_index=0)
 	layer.styles.append('GPS_tracking_points')
 	map_canvas.layers.append(layer)
 
 	# Save the map
 	map_canvas.zoom_all()
-	mapnik.render_to_file(map_canvas, 'map-assets/GPS_tracking_points.png', 'png')
+	mapnik.render_to_file(map_canvas, 'out/GPS_tracking_points.png', 'png')
