@@ -22,5 +22,7 @@ build the image:
 
 replace `/home/sam/Dropbox/folder-to-map-into-picmap` in `docker-compose.yml` to a folder on your machine that will map to the seed folder within the container. This should contain the geotagged pictures you want rendered on a map. Pictures can be in nested folders.
 
-bash into the container:
+run the script:
 `docker-compose run picmap bash "picmap/run.sh"`
+
+it will then generate a map here: `./out/GPS_tracking_points.png`.
