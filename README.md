@@ -10,3 +10,17 @@ picmap recursively scans a seed directory and builds up an index of files, notin
 - simplekml
 
 [![picmap](https://github.com/samthomson/picmap/blob/master/GPS_tracking_points.png?raw=trueg)](https://github.com/samthomson/picmap/blob/master/GPS_tracking_points.png?raw=true)
+
+
+## running
+
+build the image:
+`docker-compose build picmap`
+
+set a folder in docker-compose to map to seed.
+
+bash into the container:
+`docker-compose run picmap bash`
+
+run script `python picmap/src/setup.py`
+run script `python picmap/src/picmap.py`

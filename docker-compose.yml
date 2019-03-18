@@ -1,0 +1,8 @@
+version: "2"
+services:
+  picmap:
+    build:
+      context: ./
+    volumes:
+      - ./:/picmap
+      - /home/sam/Dropbox/one file test:/picmap/seed
