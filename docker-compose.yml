@@ -5,4 +5,4 @@ services:
       context: ./
     volumes:
       - ./:/picmap
-      - /home/sam/Dropbox/one file test:/picmap/seed
+      - /home/sam/Dropbox/folder-to-map-into-picmap:/picmap/seed
