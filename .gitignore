@@ -2,7 +2,8 @@
 seed
 
 # map renderings and db
-out
+out/*
+!out/.gitignore
 
 # compiled python files
 *.pyc

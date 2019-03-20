@@ -2,6 +2,8 @@
 
 picmap recursively scans a seed directory and builds up an index of files, noting their latitude/longitude exif tags if set. It then renders a map with a marker for each picture it has a location for.
 
+Note: files must be geotagged (via exif data) for this program to work as expected.
+
 ## notes
 
 Requires docker and docker-compose.
